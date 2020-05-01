@@ -1610,3 +1610,37 @@ class Instagram:
             except:
                 raise InstagramException("Exept on unfollow!")
         return False
+
+    def block(self, user_id):
+        """
+        :param user_id: user id
+        :return: bool
+        """
+        if self.is_logged_in(self.user_session):
+            url_block = endpoints.get_block_url(user_id)
+            try:
+                block = self.__req.post(url_block,
+                                        headers=self.generate_headers(
+                                            self.user_session))
+                if block.status_code == Instagram.HTTP_OK:
+                    return block
+            except:
+                raise InstagramException("Exept on block!")
+        return False
+
+    def unblock(self, user_id):
+        """
+        :param user_id: user id
+        :return: bool
+        """
+        if self.is_logged_in(self.user_session):
+            url_unblock = endpoints.get_unblock_url(user_id)
+            try:
+                unblock = self.__req.post(url_unblock,
+                                          headers=self.generate_headers(
+                                              self.user_session))
+                if unblock.status_code == Instagram.HTTP_OK:
+                    return unblock
+            except:
+                raise InstagramException("Exept on unblock!")
+        return False

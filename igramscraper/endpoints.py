@@ -24,6 +24,8 @@ FOLLOWERS_URL_OLD = 'https://www.instagram.com/graphql/query/?query_id=178513746
 FOLLOWERS_URL = 'https://www.instagram.com/graphql/query/?query_hash=c76146de99bb02f6415203be841dd25a&variables=%s'
 FOLLOW_URL = 'https://www.instagram.com/web/friendships/%s/follow/'
 UNFOLLOW_URL = 'https://www.instagram.com/web/friendships/%s/unfollow/'
+BLOCK_URL = 'https://www.instagram.com/web/friendships/%s/block/'
+UNBLOCK_URL = 'https://www.instagram.com/web/friendships/%s/unblock/'
 INSTAGRAM_CDN_URL = 'https://scontent.cdninstagram.com/'
 ACCOUNT_JSON_PRIVATE_INFO_BY_ID = 'https://i.instagram.com/api/v1/users/%s/info/'
 LIKE_URL = 'https://www.instagram.com/web/likes/%s/like/'
@@ -92,6 +94,14 @@ def get_follow_url(account_id):
 
 def get_unfollow_url(account_id):
     return UNFOLLOW_URL % urllib.parse.quote_plus(account_id)
+
+
+def get_block_url(account_id):
+    return BLOCK_URL % urllib.parse.quote_plus(account_id)
+
+
+def get_unblock_url(account_id):
+    return UNBLOCK_URL % urllib.parse.quote_plus(account_id)
 
 
 def get_followers_json_link_old(account_id, count, after=''):
